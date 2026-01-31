@@ -128,7 +128,9 @@ export class ASTParserAndPrinter {
         if (stderr && !stdout) {
           throw new Error(`Lute error: ${stderr}`);
         }
-
+        if (stdout) {
+          console.log(`ASTPrinter: Lute Command Returned: ${stdout}`);
+        }
         return stdout || this.createErrorAST("No output from Lute");
       } finally {
         // Clean up the temporary source file
@@ -212,6 +214,10 @@ export class ASTParserAndPrinter {
 
         if (stderr && !stdout) {
           throw new Error(`Lute error: ${stderr}`);
+        }
+        
+        if (stdout) {
+          console.log(`ASTParser: Lute Command Returned: ${stdout}`);
         }
 
         return stdout || this.createErrorAST("No output from Lute");
